@@ -1,0 +1,362 @@
+/* Dashboard - Clean, consistent borders */
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4); /* Adjusted spacing */
+}
+
+/* Stats */
+.stats {
+    display: flex;
+    gap: var(--space-8);
+    padding-bottom: var(--space-6);
+    padding-top: var(--space-2);
+    margin-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-4);
+    background: var(--gradient-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+}
+
+.stat:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-300);
+}
+
+.statValue {
+    font-family: var(--font-sans);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--color-primary-600);
+    line-height: 1;
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-1);
+}
+
+.statLabel {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-text-secondary);
+}
+
+/* Filter tabs */
+/* Controls Bar (Tabs + Search) */
+.controlsBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-6);
+    position: relative;
+    /* Ensure context for mobile search overlay */
+    min-height: 44px;
+}
+
+.filterTabs {
+    display: flex;
+    gap: var(--space-5);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex: 1;
+    /* Allow tabs to breathe */
+    margin-right: var(--space-4);
+}
+
+.filterTabs::-webkit-scrollbar {
+    display: none;
+}
+
+.filterTab {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-secondary);
+    padding: var(--space-2) 0;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    /* Align with border-bottom of container */
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+    flex-shrink: 0;
+    cursor: pointer;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.filterTab:hover {
+    color: var(--color-ink);
+}
+
+.filterTab.active {
+    color: var(--color-ink);
+    font-weight: var(--font-semibold);
+    border-bottom-color: var(--color-primary-600);
+    color: var(--color-primary-600); /* Adjusted to use primary color */
+}
+
+.filterTabCount {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-muted);
+    margin-left: var(--space-1);
+}
+
+.filterTab.active .filterTabCount {
+    color: var(--color-primary-600); /* Adjusted to use primary color */
+}
+
+/* Search Section */
+.searchSection {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.searchWrapper {
+    position: relative;
+    width: 20rem;
+    transition: all var(--transition-fast);
+}
+
+.searchIcon {
+    position: absolute;
+    left: var(--space-3);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    color: var(--color-gray-400);
+    pointer-events: none;
+}
+
+.searchInput {
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    padding-left: var(--space-8);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-paper);
+    transition: all var(--transition-fast);
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--color-ink);
+    box-shadow: 0 0 0 2px var(--color-wash);
+}
+
+.searchInput::placeholder {
+    color: var(--color-text-secondary);
+    font-weight: var(--font-normal);
+}
+
+/* Mobile Search Toggle */
+.mobileSearchToggle {
+    display: none;
+    /* Hidden on Desktop */
+    padding: var(--space-2);
+    color: var(--color-text-secondary);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.mobileSearchToggle:hover {
+    color: var(--color-ink);
+}
+
+.closeSearchBtn {
+    display: none;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+    .controlsBar {
+        gap: var(--space-2);
+    }
+
+    .filterTabs {
+        margin-right: 0;
+    }
+
+    /* Hide full search input by default on mobile */
+    .searchWrapper {
+        display: none;
+    }
+
+    /* Show icon trigger */
+    .mobileSearchToggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Expanded State */
+    .searchWrapper.searchExpanded {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        inset: 0;
+        background-color: var(--color-paper);
+        z-index: 10;
+        width: 100%;
+        padding: 0;
+        animation: fadeIn 150ms ease-out;
+    }
+
+    .searchWrapper.searchExpanded .searchInput {
+        border-radius: 0;
+        border: none;
+        height: 100%;
+        background-color: transparent;
+        padding-left: var(--space-8);
+    }
+
+    .searchWrapper.searchExpanded .searchInput:focus {
+        box-shadow: none;
+    }
+
+    .closeSearchBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-3);
+        background: none;
+        border: none;
+        color: var(--color-text-secondary);
+        cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+/* Table actions */
+.tableActions {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.actionButton {
+    padding: var(--space-1);
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.actionButton:hover {
+    color: var(--color-ink);
+    background-color: var(--color-gray-100);
+}
+
+/* Contract name */
+.contractName {
+    font-weight: var(--font-semibold);
+    color: var(--color-ink);
+    text-decoration: none;
+}
+
+.contractName:hover {
+    opacity: 0.7;
+}
+
+/* Empty state - Enhanced */
+.emptyState {
+    text-align: center;
+    padding: var(--space-16) var(--space-6);
+    background: var(--gradient-surface);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
+}
+
+.emptyIcon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto var(--space-4);
+    color: var(--color-primary-300);
+    opacity: 0.7;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+
+.emptyTitle {
+    font-family: var(--font-sans);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--color-ink);
+    margin-bottom: var(--space-2);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.emptyDescription {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+    line-height: var(--leading-relaxed);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+    .dashboard {
+        gap: var(--space-4); /* Adjusted spacing for mobile */
+    }
+
+    .stats {
+        gap: var(--space-6);
+        flex-wrap: wrap;
+    }
+
+    .stat {
+        min-width: 45%;
+        /* Ensure roughly 2 columns on mobile */
+    }
+
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-3);
+    }
+
+    .searchWrapper {
+        max-width: 100%;
+    }
+
+    .filterTabs {
+        gap: var(--space-4);
+    }
+}

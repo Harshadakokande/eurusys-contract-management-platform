@@ -1,0 +1,119 @@
+/* 
+ * Badge - Clean status indicators
+ */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    padding: 6px 10px;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-xs);
+    transition: all var(--transition-fast);
+}
+
+/* Status variations with enhanced colors */
+.created {
+    background: linear-gradient(135deg, var(--color-gray-100) 0%, var(--color-gray-200) 100%);
+    color: var(--color-gray-700);
+    border: 1px solid var(--color-gray-300);
+}
+
+.approved {
+    background: linear-gradient(135deg, var(--color-info-bg) 0%, var(--color-primary-50) 100%);
+    color: var(--color-primary-700);
+    border: 1px solid var(--color-primary-200);
+}
+
+.sent {
+    background: linear-gradient(135deg, var(--color-warning-bg) 0%, #fef3c7 100%);
+    color: var(--color-warning);
+    border: 1px solid var(--color-warning);
+}
+
+.signed {
+    background: linear-gradient(135deg, var(--color-success-bg) 0%, var(--color-success-bg) 100%);
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+}
+
+.locked {
+    background: linear-gradient(135deg, var(--color-gray-200) 0%, var(--color-gray-300) 100%);
+    color: var(--color-gray-700);
+    border: 1px solid var(--color-gray-400);
+}
+
+.revoked {
+    background: linear-gradient(135deg, var(--color-error-bg) 0%, #fee2e2 100%);
+    color: var(--color-error);
+    border: 1px solid var(--color-error);
+}
+
+.default {
+    background-color: var(--color-wash);
+    color: var(--color-text-secondary);
+}
+
+.success {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.warning {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.info {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+/* Dark Mode Overrides */
+:global([data-theme='dark']) .badge {
+    border: 1px solid transparent;
+}
+
+:global([data-theme='dark']) .created {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #e5e7eb;
+}
+
+:global([data-theme='dark']) .approved,
+:global([data-theme='dark']) .info {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #93c5fd;
+}
+
+:global([data-theme='dark']) .sent,
+:global([data-theme='dark']) .warning {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: #fcd34d;
+}
+
+:global([data-theme='dark']) .signed,
+:global([data-theme='dark']) .success {
+    background-color: rgba(16, 185, 129, 0.15);
+    color: #6ee7b7;
+}
+
+:global([data-theme='dark']) .locked {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #9ca3af;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:global([data-theme='dark']) .revoked,
+:global([data-theme='dark']) .error {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+}

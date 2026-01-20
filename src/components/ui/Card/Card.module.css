@@ -1,0 +1,63 @@
+.card {
+    background: var(--gradient-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+}
+
+.interactive {
+    cursor: pointer;
+}
+
+.interactive:hover {
+    border-color: var(--color-primary-300);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.header {
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--gradient-subtle);
+}
+
+.headerTitle {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.title {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    color: var(--color-ink);
+    margin: 0;
+    line-height: var(--leading-snug);
+}
+
+.description {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-1);
+    line-height: var(--leading-normal);
+}
+
+.body {
+    padding: var(--space-5);
+}
+
+.footer {
+    padding: var(--space-4) var(--space-5);
+    border-top: 1px solid var(--color-border);
+    background: var(--gradient-accent);
+}
+
+.compact .header,
+.compact .body,
+.compact .footer {
+    padding: var(--space-3);
+}

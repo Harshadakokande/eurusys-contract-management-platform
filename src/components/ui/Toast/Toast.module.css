@@ -1,0 +1,97 @@
+/* Toast - Notification styling */
+
+.toastContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-modal);
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    /* Allow clicks through empty space */
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-6);
+    background: var(--gradient-primary);
+    color: var(--color-paper);
+    width: 100%;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    animation: slideUp 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-xl);
+    pointer-events: auto;
+    border-radius: 0;
+    border-left: 4px solid var(--color-primary-400);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.toast.closing {
+    animation: slideDown 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(100%);
+    }
+}
+
+.toast.success {
+    background: linear-gradient(135deg, var(--color-success) 0%, var(--color-success) 100%);
+    border-left-color: var(--color-success);
+}
+
+.toast.error {
+    background: linear-gradient(135deg, var(--color-error) 0%, var(--color-error) 100%);
+    border-left-color: var(--color-error);
+}
+
+.toast.warning {
+    background: linear-gradient(135deg, var(--color-warning) 0%, var(--color-warning) 100%);
+    border-left-color: var(--color-warning);
+}
+
+.toast.info {
+    background: linear-gradient(135deg, var(--color-info) 0%, var(--color-info) 100%);
+    border-left-color: var(--color-info);
+}
+
+.message {
+    flex: 1;
+}
+
+.closeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2);
+    color: var(--color-paper);
+    opacity: 0.8;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.closeButton:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
