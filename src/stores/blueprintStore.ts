@@ -154,7 +154,7 @@ export const useBlueprintStore = create<BlueprintState>()(
             },
         }),
         {
-            name: 'eurosys_blueprints',
+            name: 'EURUSYS_blueprints',
             // Merge defaults with persisted data to ensure templates always exist
             merge: (persistedState, currentState) => {
                 const persisted = persistedState as BlueprintState;

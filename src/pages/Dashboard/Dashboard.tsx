@@ -268,7 +268,7 @@ export function Dashboard() {
                         {activeFilter === 'ALL' && !searchQuery && (
                             <div className={styles.emptyActions}>
                                 <p className={styles.emptyHint}>
-                                    💡 <strong>Getting Started:</strong> Create your first blueprint template, then use it to generate contracts.
+                                     <strong>Getting Started:</strong> Create your first blueprint template, then use it to generate contracts.
                                 </p>
                                 <Link to="/contracts/new">
                                     <Button>

@@ -24,7 +24,7 @@ export function Layout() {
                     {/* Brand */}
                     <div className={styles.brand}>
                         <NavLink to="/" className={styles.brandName}>
-                            EUROSYS
+                            EURUSYS
                         </NavLink>
                         <span className={styles.brandTagline}>
                             Contract Management Platform

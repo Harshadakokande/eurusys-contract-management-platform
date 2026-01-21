@@ -175,7 +175,7 @@ export const useContractStore = create<ContractState>()(
             },
         }),
         {
-            name: 'Eurosys_Contracts',
+            name: 'EURUSYS_Contracts',
         }
     )
 );

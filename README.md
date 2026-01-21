@@ -15,6 +15,30 @@ npm run dev
 
 Opens at http://localhost:3000
 
+
+## Tech Stack
+
+This project is implemented using a modern frontend technology stack chosen to balance simplicity, scalability, and maintainability.
+
+**React 18**  
+React is used for building a component-based user interface. It allows the application to be structured into reusable UI and feature components, making the codebase modular and easy to extend.
+
+**TypeScript**  
+TypeScript provides strong static typing across the application. Domain models such as contracts, blueprints, and lifecycle states are strictly typed, which helps prevent invalid state transitions and logical errors during development.
+
+**Component-Based Architecture**  
+The UI is divided into atomic components (Button, Input, Table, Badge) and feature-level components (BlueprintForm, SignaturePad). This ensures separation of concerns and keeps each part of the system focused on a single responsibility.
+
+**State Management (Zustand)**  
+Zustand is used for global state management. It provides a lightweight and readable alternative to heavier solutions like Redux, while still offering predictable state updates and easy persistence.
+
+**LocalStorage (Mock Data Layer)**  
+No backend is used. All data is stored in the browser using `localStorage` through Zustand persistence. This satisfies the assignment requirement for mock data and keeps the project fully frontend-focused.
+
+**CSS Modules**  
+CSS Modules are used for styling to avoid global CSS conflicts and keep styles scoped to individual components. Design consistency is maintained using CSS variables for colors, spacing, and typography.
+
+
 ## Features
 
 **Blueprint Management**  
