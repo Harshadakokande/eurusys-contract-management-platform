@@ -13,12 +13,8 @@ import { Button } from '../../../components/ui/Button/Button';
 import { Badge } from '../../../components/ui/Badge/Badge';
 import { SignaturePad } from '../../../components/features/SignaturePad/SignaturePad';
 import { STATUS_LABELS, type ContractStatus, type ContractField } from '../../../types';
-import {
-    getValidTransitions,
-    isEditable,
-    isTerminal,
-    TRANSITION_LABELS,
-} from '../../../utils/stateMachine';
+import { getValidTransitions } from '../../../utils/stateMachine';
+
 import { formatDate } from '../../../utils/helpers';
 import styles from './ContractView.module.css';
 
@@ -47,7 +43,6 @@ export function ContractView() {
     const [showSendModal, setShowSendModal] = useState(false);
     const [showSignModal, setShowSignModal] = useState(false);
     const [recipientEmail, setRecipientEmail] = useState('');
-    const [emailMessage, setEmailMessage] = useState('');
     const [modalSignature, setModalSignature] = useState<string | null>(null);
 
     const contract = id ? getContract(id) : undefined;
@@ -67,9 +62,6 @@ export function ContractView() {
             </div>
         );
     }
-
-    const canEdit = isEditable(contract.status);
-    const terminalState = isTerminal(contract.status);
     const validTransitions = getValidTransitions(contract.status);
 
     /* -------------------- Helpers -------------------- */
@@ -115,7 +107,7 @@ export function ContractView() {
         setShowSendModal(false);
         showToast(`Email sent to ${recipientEmail} (simulated).`);
         setRecipientEmail('');
-        setEmailMessage('');
+       
     };
 
     const handleSignContract = () => {
